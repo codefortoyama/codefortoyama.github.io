@@ -1,0 +1,66 @@
+:root {
+    --primary: var(--cyan);
+}
+
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+a {
+    color: var(--primary);
+}
+
+a:hover {
+    color: var(--secondary);
+}
+
+.page-section {
+    padding: 5rem 0;
+}
+
+.masthead {
+    padding-top: 10rem;
+    padding-bottom: calc(10rem - 4.5rem);
+    background: linear-gradient(to bottom, rgba(23, 162, 184, 0.7) 0%, rgba(23, 162, 184, 0.7) 100%), url("../assets/img/masthead.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+@media (min-width: 992px) {
+    .masthead {
+        padding-top: 4.5rem;
+        padding-bottom: 0;
+    }
+}
+
+#activities .container-fluid{
+    max-width: 1920px;
+}
+
+#activities .container-fluid .box{
+    position: relative;
+    display: block;
+}
+
+#activities .container-fluid .box .caption{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 30%;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    opacity: 1;
+    color: #fff;
+    padding: 30px;
+    background: rgba(23, 162, 184, 0.7);
+    transition: opacity 0.25s ease;
+    text-align: center;
+}
+
+#activities .container-fluid .box:hover{
+    opacity: 0.5;
+}
+
