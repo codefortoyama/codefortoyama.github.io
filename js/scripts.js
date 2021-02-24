@@ -26,4 +26,32 @@
     offset: 75
   });
 
+  // Embed note article
+  $.ajax({
+    url: 'https://api.tera-chan.com/api/ignore_cors/v1.php?resource=https://note.com/codefortoyama/rss',
+    cache: false,
+    dataType: 'xml',
+    success: (xml) => {
+      $(xml).find('item').each((index, element) => {
+        if(index > 2){
+          return false;
+        }
+        $('.note-row').append(
+          '<div class="col-lg-4 col-sm-6 col-xs-12 mb-3">' +
+          '<a class="card h-100 shadow text-left" href="' + $(element).find('link').text() + '" target="_blank" rel="noopener noreferrer">' +
+          '<img src="' + $(element).find('media\\:thumbnail').text() + '" class="card-img-top" alt="">' +
+          '<span class="card-body">' +
+          '<h5 class="card-title">' + $(element).find('title').text() + '</h5>' +
+          '<span class="d-flex justify-content-between align-items-center">' + '<span class="text-muted" style="font-size:11px;">' +
+          '<span class="badge badge-success mr-1" style="background-color:#2cb696;">note</span>' +
+          new Date($(element).find('pubDate').text()).toLocaleDateString() +
+          '</span>' +
+          '</span>' +
+          '</a>' +
+          '</div>'
+        );
+      });
+    }
+  });
+
 })(jQuery); // End of use strict
