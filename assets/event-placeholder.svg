@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#edf2ed"/>
+  <path d="M0 520 190 340 315 440 520 205 700 410 875 260 1200 510V630H0Z" fill="#d3e1d8"/>
+  <path d="M0 590 270 460 440 545 675 350 900 485 1200 385V630H0Z" fill="#b0c9bd"/>
+  <circle cx="1010" cy="130" r="48" fill="#d5eb80"/>
+  <text x="80" y="140" fill="#176455" font-family="Arial, sans-serif" font-size="28" letter-spacing="5">CODE FOR TOYAMA</text>
+  <text x="80" y="245" fill="#176455" font-family="Arial, sans-serif" font-size="64" font-weight="700">COMMUNITY EVENT</text>
+</svg>

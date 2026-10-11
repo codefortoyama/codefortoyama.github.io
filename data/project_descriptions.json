@@ -1,0 +1,85 @@
+{
+  "reviewed_on": "2026-10-11",
+  "projects": {
+    "kitekite": {
+      "description": "富山空港を応援する非公式ファンサイト。飛行機と新幹線の移動時間の比較、フライトマップ、空港へのアクセスや利用者の投稿を紹介します。",
+      "sources": ["https://github.com/codefortoyama/kitekite/blob/main/README.md"]
+    },
+    "udc2026": {
+      "description": "とやま市民IT開発部の活動案内。AIとオープンデータを使って身近な困りごとを解決するアプリづくりを学ぶ、UDC2026富山県ブロックの参加案内や教材をまとめています。",
+      "sources": ["https://github.com/codefortoyama/udc2026/blob/main/index.md", "https://github.com/codefortoyama/udc2026/blob/main/README.md"]
+    },
+    "population": {
+      "description": "国勢調査と住民基本台帳の人口をグラフで比較する、富山市人口ビューアーの試作版。統計による人口の数値の違いを確認できます。",
+      "sources": ["https://github.com/codefortoyama/population/blob/main/README.md"]
+    },
+    "opendata": {
+      "description": "富山県や県内市町村の公式オープンデータと、それらを活用したサイト・アプリをまとめたリンク集。データを探す入口と活用事例を紹介します。",
+      "sources": ["https://github.com/codefortoyama/opendata/blob/master/src/pages/index.astro"]
+    },
+    "school": {
+      "description": "富山市の小中学校の校区と人口を地図で比較するアナライザー。250m単位の人口・世帯データを使い、地域の人口分布や学校再編を考える材料を可視化します。",
+      "sources": ["https://github.com/codefortoyama/school/blob/master/web/index.html", "https://github.com/codefortoyama/school/blob/master/files.md"]
+    },
+    "toyama-food-watcher": {
+      "description": "富山市の食品営業許可データから、最近許可された施設を検索・閲覧するアプリ。表示する日付は営業許可を受けた日で、実際の開店日とは異なる場合があります。",
+      "sources": ["https://github.com/codefortoyama/toyama-food-watcher/blob/master/README.md"]
+    },
+    "meisui": {
+      "description": "富山県内の名水スポットを地図で探す観光アプリ。現地でGPSによるデジタルスタンプを集め、訪問履歴やスタンプ帳で名水めぐりを楽しめます。",
+      "sources": ["https://github.com/codefortoyama/meisui/blob/main/README.md"]
+    },
+    "www": {
+      "description": "Code for Toyamaのイベント関連ファイルを整理するリポジトリ。ハッピーデータとやま！、AI・LINEの催し、シビックテックナイトのファイルをイベントごとのフォルダにまとめています。",
+      "sources": ["https://github.com/codefortoyama/www/tree/main/events"]
+    },
+    "codefortoyama.github.io": {
+      "description": "Code for Toyama Cityの公式サイト用リポジトリ。団体紹介、イベント、活動内容、プロジェクト紹介など、コミュニティへの参加の入口となるサイトを管理します。",
+      "sources": ["https://github.com/codefortoyama/codefortoyama.github.io"]
+    },
+    "events": {
+      "description": "イベントの企画資料をまとめたリポジトリ。富山のウェルビーイングをデータから考える「ハッピーデータとやま！」の目的やプログラム案を掲載しています。",
+      "sources": ["https://github.com/codefortoyama/events/blob/master/2026/udc/civicpowerbattle.md"]
+    },
+    "ohwatcha": {
+      "description": "お祭りの情報を地図で紹介する「ohwatcha」の開発リポジトリ。地図を表示する画面と、祭りの情報を管理する仕組みをまとめています。",
+      "sources": ["https://github.com/codefortoyama/ohwatcha/blob/main/README.md"]
+    },
+    "ohwatcha.old": {
+      "description": "お祭りマップ「ohwatcha」の地図画面と情報管理の仕組みをまとめたリポジトリ。アプリの構成や開発・配布の手順も掲載しています。",
+      "sources": ["https://github.com/codefortoyama/ohwatcha.old/blob/main/README.md"]
+    },
+    "documents": {
+      "description": "活動で使う技術資料の共有場所。地図を扱うQGIS、公共交通データを扱うGTFS-GOの情報や、朝もく会の開催要領をまとめています。",
+      "sources": ["https://github.com/codefortoyama/documents/blob/master/README.md"]
+    },
+    "data": {
+      "description": "Code for Toyamaが作成したデータを共有するリポジトリ。富山県の新型コロナ対策の警戒レベルの推移を整理した表データと、その定義を保存しています。",
+      "sources": ["https://github.com/codefortoyama/data/blob/master/covid19/README.md"]
+    },
+    "papamama": {
+      "description": "富山市内の保育所、認定こども園、幼稚園などの位置・定員情報を地図で紹介する保育園マップ。富山市・富山県のオープンデータを活用しています。",
+      "sources": ["https://github.com/codefortoyama/papamama/blob/master/README.md"]
+    },
+    "decidim-cfj": {
+      "description": "市民参加プラットフォームDecidimを基にしたWebアプリ。自治体や団体の市民参加の場づくりに使うための開発用ソースと導入手順を公開しています。",
+      "sources": ["https://github.com/codefortoyama/decidim-cfj/blob/develop/README.md"]
+    },
+    "support_covid19": {
+      "description": "新型コロナの影響を受けた市民・事業者向けの支援制度を、分類やキーワードで検索するサイトのソースコード。大阪市の公開コードを基に富山市向けに展開したものです。",
+      "sources": ["https://github.com/codefortoyama/support_covid19/blob/dev/README.md"]
+    },
+    "covid19": {
+      "description": "富山県の新型コロナ関連オープンデータを、共通形式へ変換して提供するためのWebアプリの開発リポジトリです。",
+      "sources": ["https://github.com/codefortoyama/covid19/blob/development/README.md", "https://github.com/codefortoyama/covid19/blob/development/resources/views/top.blade.php"]
+    },
+    "doc": {
+      "description": "コミュニティの運営文書をまとめたリポジトリ。Code for Toyamaの会則、富山県のCode for連絡会の会則、シビックテックナイトの運営マニュアルを保存しています。",
+      "sources": ["https://github.com/codefortoyama/doc/tree/master/Constitution"]
+    },
+    "5374": {
+      "description": "住んでいる地域を選ぶと、ごみの収集日と捨てられるごみの種類を確認できる富山市版のごみ収集案内アプリ。富山市の公開データを活用しています。",
+      "sources": ["https://github.com/codefortoyama/5374/blob/gh-pages/README.md"]
+    }
+  }
+}

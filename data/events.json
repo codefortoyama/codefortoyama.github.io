@@ -1,0 +1,96 @@
+{
+  "source": "https://codefortoyama.connpass.com/ja.atom",
+  "fetched_at": "2026-10-11T10:02:32+09:00",
+  "events": [
+    {
+      "title": "AI開発をやってみよう/UDC2026富山 市民IT開発部",
+      "url": "https://codefortoyama.connpass.com/event/409117/",
+      "start": "2026-10-15T19:00:00+09:00",
+      "end": "2026-10-15T20:30:00+09:00",
+      "place": "オンライン",
+      "description": "WindowsパソコンにAI助手アプリ（OpenCode Desktop）を入れて、安全設定をして、 富山市のオープンデータを使った小さなWEBアプリを1つ作って、ブラウザで見るところまで体験する 90分のハンズオンです。 初参加・パソコンが苦手な人向け。事前準備なしでOK。",
+      "image_url": "https://media.connpass.com/thumbs/6a/5f/6a5f6c7d702274ef438f341a30682013.png"
+    },
+    {
+      "title": "シビックテックナイト48",
+      "url": "https://codefortoyama.connpass.com/event/398745/",
+      "start": "2026-07-15T19:00:00+09:00",
+      "end": "2026-07-15T20:30:00+09:00",
+      "place": "オンライン",
+      "description": "今回のシビックテックナイトでは、** シビックパワーバトル全国大会 ** の参加報告会となります。 7/10(金) 東京ビッグサイトで開催された、シビックパワーバトル全国大会の参加レポートと今後の活動について参加者のみなさんと意見交換を行います。",
+      "image_url": "https://media.connpass.com/thumbs/1d/4b/1d4b01a19eb6effa92658c2d1e9c1f28.png"
+    },
+    {
+      "title": "朝の通勤が学びの時間に変わる！自分で作る AIニュースLINE公式アカウント IN 富山",
+      "url": "https://codefortoyama.connpass.com/event/397300/",
+      "start": "2026-06-26T18:30:00+09:00",
+      "end": "2026-06-26T20:30:00+09:00",
+      "place": "富山県富山市新総曲輪4番18号",
+      "description": "朝の通勤が学びの時間に変わる！ 自分で作る AIニュースLINE公式アカウント IN 富山",
+      "image_url": "https://media.connpass.com/thumbs/76/19/76198720d3e3b93f2fb7ffa42c1a00b8.png"
+    },
+    {
+      "title": "シビックテックナイト#47",
+      "url": "https://codefortoyama.connpass.com/event/394568/",
+      "start": "2026-06-03T19:00:00+09:00",
+      "end": "2026-06-03T20:30:00+09:00",
+      "place": "オンライン",
+      "description": "今回のシビックテックナイトでは、新湊・放生津の獅子舞マップと、ハッピーデータとやま！の取り組みを振り返ります。",
+      "image_url": "https://media.connpass.com/thumbs/80/8a/808a0c08b3f9508bf2be5559f270490c.png"
+    },
+    {
+      "title": "ハッピーデータとやま！",
+      "url": "https://codefortoyama.connpass.com/event/393060/",
+      "start": "2026-05-17T14:00:00+09:00",
+      "end": "2026-05-17T17:00:00+09:00",
+      "place": "富山県富山市新富町１丁目２−３",
+      "description": "最近、「富山県が幸福度最下位」という調査結果が話題になりました。",
+      "image_url": "https://media.connpass.com/thumbs/2c/9b/2c9bf9d4cb3ed833c6bf09e4f98420c5.png"
+    },
+    {
+      "title": "アーバンデータチャレンジ2026富山 準備会",
+      "url": "https://codefortoyama.connpass.com/event/392820/",
+      "start": "2026-05-07T19:00:00+09:00",
+      "end": "2026-05-07T21:00:00+09:00",
+      "place": "オンライン",
+      "description": "アーバンデータチャレンジ（UDC）2026に向けて、富山県ブロックの準備会を開催します！",
+      "image_url": "https://media.connpass.com/thumbs/9f/33/9f33fa4a4b3a521c2dc40d313e8bfbca.png"
+    },
+    {
+      "title": "【オンライン開催となりました】AIとデータダッシュボードを使って、最高のとやま観光をつくろう。",
+      "url": "https://codefortoyama.connpass.com/event/376160/",
+      "start": "2025-12-13T13:00:00+09:00",
+      "end": "2025-12-13T17:00:00+09:00",
+      "place": "〒930-0096 富山県富山市舟橋北町７−１",
+      "description": "とやま観光推進機構が実施している「富山観光ウェブアンケート」の個人情報を含まないデータは、オープンデータとして公開され、誰でも利用できます。しかし、そのデータを活用することは簡単ではありません。",
+      "image_url": "https://media.connpass.com/thumbs/63/18/63185805c7e18665ce7092918fc74e67.png"
+    },
+    {
+      "title": "アーバンデータチャレンジ2025富山 オンラインハッカソン",
+      "url": "https://codefortoyama.connpass.com/event/374436/",
+      "start": "2025-11-08T16:00:00+09:00",
+      "end": "2025-11-08T20:30:00+09:00",
+      "place": "オンライン",
+      "description": "オンライン（リモート会議）",
+      "image_url": "https://media.connpass.com/thumbs/18/6e/186e50feeebe6decc53284711bbcc978.png"
+    },
+    {
+      "title": "シビックテックナイト#46 バイブコーディングを体験してみよう！",
+      "url": "https://codefortoyama.connpass.com/event/363343/",
+      "start": "2025-08-04T20:00:00+09:00",
+      "end": "2025-08-04T21:30:00+09:00",
+      "place": "オンライン",
+      "description": "バイブコーディング（Vibe Coding）は、 「ノーコードや生成AIなどを使って、直感や感性（=Vibe）をそのまま“カタチ”にしていく新しい開発スタイル」のことです。 プログラミング経験ゼロでも大丈夫！ 「バイブコーディング」を通じて、自分のアイデアをAIの力でカタチにする…",
+      "image_url": "https://media.connpass.com/thumbs/9c/40/9c4048d0b40a6eaf925385ec5f6632ea.png"
+    },
+    {
+      "title": "ウィキペディアタウン 越中北前船・放生津",
+      "url": "https://codefortoyama.connpass.com/event/346262/",
+      "start": "2025-03-20T10:00:00+09:00",
+      "end": "2025-03-20T16:00:00+09:00",
+      "place": "富山県射水市三日曽根３−２３",
+      "description": "射水市放生津地域や、地域にまつわる北前船文化を主なテーマとした「ウィキペディアタウン」(※) を開催します",
+      "image_url": "https://media.connpass.com/thumbs/e0/d8/e0d88f98f74485a2fec3d5bbacb45a3a.png"
+    }
+  ]
+}

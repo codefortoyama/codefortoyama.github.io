@@ -1,0 +1,212 @@
+{
+  "source": "https://github.com/codefortoyama",
+  "fetched_at": "2026-10-11T09:28:07+09:00",
+  "projects": [
+    {
+      "name": "kitekite",
+      "url": "https://github.com/codefortoyama/kitekite",
+      "description": "富山空港を応援する非公式ファンサイト「富山きてきて空港」",
+      "last_commit": "2026-10-11T00:28:10+00:00",
+      "archived": false,
+      "fork": false,
+      "pages_url": "https://codefortoyama.github.io/kitekite/",
+      "image_url": "https://codefortoyama.github.io/kitekite/img/tateyama_2.jpg"
+    },
+    {
+      "name": "udc2026",
+      "url": "https://github.com/codefortoyama/udc2026",
+      "description": "アーバンデータチャレンジ2026富山県ブロックのWEBサイトです。",
+      "last_commit": "2026-10-10T06:13:03+00:00",
+      "archived": false,
+      "fork": false,
+      "pages_url": "https://codefortoyama.github.io/udc2026/",
+      "image_url": "https://codefortoyama.github.io/udc2026/assets/eyecatch.svg"
+    },
+    {
+      "name": "population",
+      "url": "https://github.com/codefortoyama/population",
+      "description": "富山市の人口を眺めるためのダッシュボードです。",
+      "last_commit": "2026-10-08T01:39:38+00:00",
+      "archived": false,
+      "fork": false,
+      "pages_url": "https://codefortoyama.github.io/population/",
+      "image_url": null
+    },
+    {
+      "name": "opendata",
+      "url": "https://github.com/codefortoyama/opendata",
+      "description": "",
+      "last_commit": "2026-10-04T12:41:17+00:00",
+      "archived": false,
+      "fork": false,
+      "pages_url": "https://codefortoyama.github.io/opendata/",
+      "image_url": null
+    },
+    {
+      "name": "school",
+      "url": "https://github.com/codefortoyama/school",
+      "description": "",
+      "last_commit": "2026-09-28T14:13:41+00:00",
+      "archived": false,
+      "fork": false,
+      "pages_url": "https://codefortoyama.github.io/school/",
+      "image_url": null
+    },
+    {
+      "name": "toyama-food-watcher",
+      "url": "https://github.com/codefortoyama/toyama-food-watcher",
+      "description": "",
+      "last_commit": "2026-09-22T04:38:43+00:00",
+      "archived": false,
+      "fork": false,
+      "pages_url": "https://codefortoyama.github.io/toyama-food-watcher/",
+      "image_url": null
+    },
+    {
+      "name": "meisui",
+      "url": "https://github.com/codefortoyama/meisui",
+      "description": "",
+      "last_commit": "2026-09-13T11:09:04+00:00",
+      "archived": false,
+      "fork": false,
+      "pages_url": "https://codefortoyama.github.io/meisui/",
+      "image_url": null
+    },
+    {
+      "name": "www",
+      "url": "https://github.com/codefortoyama/www",
+      "description": "",
+      "last_commit": "2026-07-15T13:44:14+00:00",
+      "archived": false,
+      "fork": false,
+      "pages_url": null
+    },
+    {
+      "name": "codefortoyama.github.io",
+      "url": "https://github.com/codefortoyama/codefortoyama.github.io",
+      "description": "こちらに移転しました→ https://code4toyama.studio.site/",
+      "last_commit": "2026-05-24T05:40:09+00:00",
+      "archived": false,
+      "fork": false,
+      "pages_url": null
+    },
+    {
+      "name": "events",
+      "url": "https://github.com/codefortoyama/events",
+      "description": "",
+      "last_commit": "2026-04-27T08:24:05+00:00",
+      "archived": false,
+      "fork": false,
+      "pages_url": null
+    },
+    {
+      "name": "ohwatcha",
+      "url": "https://github.com/codefortoyama/ohwatcha",
+      "description": "",
+      "last_commit": "2026-04-18T08:26:23+00:00",
+      "archived": false,
+      "fork": false,
+      "pages_url": null
+    },
+    {
+      "name": "ohwatcha.old",
+      "url": "https://github.com/codefortoyama/ohwatcha.old",
+      "description": "",
+      "last_commit": "2026-04-12T13:48:18+00:00",
+      "archived": false,
+      "fork": false,
+      "pages_url": null
+    },
+    {
+      "name": "documents",
+      "url": "https://github.com/codefortoyama/documents",
+      "description": "",
+      "last_commit": "2023-01-09T15:42:46+00:00",
+      "archived": false,
+      "fork": false,
+      "pages_url": null
+    },
+    {
+      "name": "data",
+      "url": "https://github.com/codefortoyama/data",
+      "description": "",
+      "last_commit": "2022-01-08T01:42:21+00:00",
+      "archived": false,
+      "fork": false,
+      "pages_url": null
+    },
+    {
+      "name": "papamama",
+      "url": "https://github.com/codefortoyama/papamama",
+      "description": "「さっぽろ保育園マップ」ソースコード",
+      "last_commit": "2021-12-04T08:03:16+00:00",
+      "archived": false,
+      "fork": true,
+      "pages_url": null
+    },
+    {
+      "name": "decidim-cfj",
+      "url": "https://github.com/codefortoyama/decidim-cfj",
+      "description": "Code for Japan Decidim",
+      "last_commit": "2021-03-09T09:08:42+00:00",
+      "archived": false,
+      "fork": true,
+      "pages_url": null
+    },
+    {
+      "name": "support_covid19",
+      "url": "https://github.com/codefortoyama/support_covid19",
+      "description": "富山市向け仮公開",
+      "last_commit": "2020-04-26T12:49:55+00:00",
+      "archived": false,
+      "fork": true,
+      "pages_url": null
+    },
+    {
+      "name": "covid19",
+      "url": "https://github.com/codefortoyama/covid19",
+      "description": "",
+      "last_commit": "2020-04-23T10:35:30+00:00",
+      "archived": false,
+      "fork": false,
+      "pages_url": null
+    },
+    {
+      "name": "doc",
+      "url": "https://github.com/codefortoyama/doc",
+      "description": "",
+      "last_commit": "2020-04-16T02:58:53+00:00",
+      "archived": false,
+      "fork": false,
+      "pages_url": null
+    },
+    {
+      "name": "5374",
+      "url": "https://github.com/codefortoyama/5374",
+      "description": "5374(ゴミナシ).jp for Kanazawa",
+      "last_commit": "2015-09-27T10:58:33+00:00",
+      "archived": false,
+      "fork": true,
+      "pages_url": "http://toyama.5374.jp/",
+      "image_url": "http://kanazawa.5374.jp/img/ogp.png"
+    },
+    {
+      "name": "bichikunavi",
+      "url": "https://github.com/codefortoyama/bichikunavi",
+      "description": "",
+      "last_commit": null,
+      "archived": false,
+      "fork": false,
+      "pages_url": null
+    },
+    {
+      "name": "IODD2016",
+      "url": "https://github.com/codefortoyama/IODD2016",
+      "description": "iODD2016用のリポジトリです。",
+      "last_commit": null,
+      "archived": false,
+      "fork": false,
+      "pages_url": null
+    }
+  ]
+}

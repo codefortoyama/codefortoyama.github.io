@@ -1,0 +1,50 @@
+name: Publish site with latest events and projects
+
+on:
+  push:
+  workflow_dispatch:
+  schedule:
+    # 3時間ごと。connpassとGitHubの公開情報を取得して公開する。
+    - cron: '17 */3 * * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: read
+    steps:
+      - uses: actions/checkout@v6
+      - name: Test data importers
+        run: python3 -m unittest discover -s tests
+      - name: Import connpass events and prepare public files
+        run: python3 scripts/update_events.py --require-fresh --output _site
+      - name: Import GitHub projects
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/update_projects.py --require-fresh --output _site
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
