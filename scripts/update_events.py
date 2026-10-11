@@ -188,6 +188,9 @@ def main():
             shutil.copytree(ROOT / name, output / name, dirs_exist_ok=True)
         for name in (".nojekyll", "sitemap.xml"):
             shutil.copy2(ROOT / name, output / name)
+        for verification in ROOT.glob("google*.html"):
+            if re.fullmatch(r"google[0-9a-f]+\.html", verification.name):
+                shutil.copy2(verification, output / verification.name)
     else:
         (ROOT / "index.html").write_text(page, encoding="utf-8")
     print(f"Rendered {len(data['events'])} connpass events" + (" (cached)" if stale else ""))
