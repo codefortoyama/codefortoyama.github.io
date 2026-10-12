@@ -158,10 +158,10 @@ class ProjectTests(unittest.TestCase):
             self.assertIsNone(projects.fetch_site_image(base))
 
     def test_eyecatch_only_for_public_site_and_fallback_when_missing(self):
-        data = {"projects": [project("with-image", pages_url="https://example.com/", image_url="https://example.com/cover.png"), project("no-image", pages_url="https://example.com/"), project("repository-only", image_url="https://example.com/ignore.png")], "fetched_at": "2026-10-11T09:00:00+09:00"}
+        data = {"projects": [project("with-image", pages_url="https://codefortoyama.github.io/", image_url="https://codefortoyama.github.io/cover.png"), project("no-image", pages_url="https://example.com/"), project("repository-only", image_url="https://example.com/ignore.png")], "fetched_at": "2026-10-11T09:00:00+09:00"}
         html = projects.render_featured(data)
         self.assertEqual(html.count('class="project-eyecatch"'), 2)
-        self.assertIn('src="https://example.com/cover.png"', html)
+        self.assertIn('src="https://codefortoyama.github.io/cover.png"', html)
         self.assertIn('src="assets/project-placeholder.svg"', html)
         self.assertNotIn("ignore.png", html)
 
@@ -170,14 +170,30 @@ class ProjectTests(unittest.TestCase):
         response = MagicMock()
         response.read.return_value = b'<meta property="og:image" content="missing.png"><img class="hero-photo" src="img/main.jpg"><img src="icon.png">'
         response.headers.get_content_charset.return_value = "utf-8"
-        response.geturl.return_value = "https://example.com/project/"
+        response.geturl.return_value = "https://codefortoyama.github.io/project/"
         response.__enter__.return_value = response
-        with patch.object(projects, "urlopen", return_value=response), patch.object(projects, "check_published_site", side_effect=[None, "https://example.com/project/img/main.jpg"]) as verify:
-            self.assertEqual(projects.fetch_site_image("https://example.com/project/"), "https://example.com/project/img/main.jpg")
+        with patch.object(projects, "urlopen", return_value=response), patch.object(projects, "check_published_site", side_effect=[None, "https://codefortoyama.github.io/project/img/main.jpg"]) as verify:
+            self.assertEqual(projects.fetch_site_image("https://codefortoyama.github.io/project/"), "https://codefortoyama.github.io/project/img/main.jpg")
             self.assertEqual(verify.call_count, 2)
 
+    def test_unreviewed_page_is_not_fetched_and_cached_image_uses_placeholder(self):
+        for url in ["http://127.0.0.1/", "https://unreviewed.example/", "http://toyama.5374.jp/"]:
+            with self.subTest(url=url), patch.object(projects, "urlopen") as fetch:
+                self.assertIsNone(projects.fetch_site_image(url))
+                self.assertIsNone(projects.check_published_site(url))
+                fetch.assert_not_called()
+        data = {"projects": [project("example", pages_url="https://project.example/", image_url="https://unreviewed.example/cover.png")], "fetched_at": "2026-10-11T09:00:00+09:00"}
+        html = projects.render_featured(data)
+        self.assertIn('href="https://project.example/"', html)
+        self.assertIn('src="assets/project-placeholder.svg"', html)
+        self.assertNotIn("unreviewed.example", html)
+
+    def test_unreviewed_metadata_image_skipped_for_local_hero(self):
+        html = '<meta property="og:image" content="https://unreviewed.example/cover.png"><img class="hero" src="cover.png">'
+        self.assertEqual(projects.parse_site_images(html, "https://codefortoyama.github.io/project/"), ["https://codefortoyama.github.io/project/cover.png"])
+
     def test_unsafe_site_url_falls_back(self):
-        for url in ["javascript:alert(1)", "//example.com", "https://user:password@example.com/"]:
+        for url in ["javascript:alert(1)", "//example.com", "https://user:password@example.com/", "http://toyama.5374.jp/"]:
             item = project("example", pages_url=url)
             self.assertEqual(projects.project_destination(item)[0], item["url"])
         self.assertEqual(projects.safe_site_url("https://codefortoyama.github.io/example/"), "https://codefortoyama.github.io/example/")

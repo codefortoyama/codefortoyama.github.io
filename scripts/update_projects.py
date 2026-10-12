@@ -10,8 +10,13 @@ from pathlib import Path
 import re
 from urllib.error import HTTPError, URLError
 from urllib.parse import quote, urlencode, urljoin, urlsplit
-from urllib.request import Request, urlopen
+from urllib.request import Request
 import xml.etree.ElementTree as ET
+
+try:
+    from safe_http import API_HOSTS, PAGE_HOSTS, IMAGE_HOSTS, secure_urlopen as urlopen, validate_url
+except ModuleNotFoundError:
+    from scripts.safe_http import API_HOSTS, PAGE_HOSTS, IMAGE_HOSTS, secure_urlopen as urlopen, validate_url
 
 ROOT = Path(__file__).resolve().parent.parent
 OWNER = "codefortoyama"
@@ -27,27 +32,28 @@ def api_get(url):
     token = os.environ.get("GH_TOKEN")
     if token:
         headers["Authorization"] = "Bearer " + token
-    with urlopen(Request(url, headers=headers), timeout=30) as response:
+    with urlopen(Request(url, headers=headers), timeout=30, allowed_hosts=API_HOSTS) as response:
         raw = response.read(5_000_001)
         if len(raw) > 5_000_000:
             raise ValueError("GitHub response exceeds the size limit")
         return json.loads(raw), response.headers.get("Link", "")
 
 
-def check_published_site(url):
+def check_published_site(url, allowed_hosts=PAGE_HOSTS):
     headers = {"User-Agent": "CodeForToyamaWebsite/1.0"}
     try:
-        with urlopen(Request(url, headers=headers, method="HEAD"), timeout=20) as response:
+        validate_url(url, allowed_hosts)
+        with urlopen(Request(url, headers=headers, method="HEAD"), timeout=20, allowed_hosts=allowed_hosts) as response:
             return safe_site_url(response.geturl()) if response.status == 200 else None
     except HTTPError as error:
         if error.code != 405:
             return None
-    except (URLError, TimeoutError):
+    except (URLError, TimeoutError, ValueError):
         return None
     try:
-        with urlopen(Request(url, headers=headers), timeout=20) as response:
+        with urlopen(Request(url, headers=headers), timeout=20, allowed_hosts=allowed_hosts) as response:
             return safe_site_url(response.geturl()) if response.status == 200 else None
-    except (URLError, TimeoutError):
+    except (URLError, TimeoutError, ValueError):
         return None
 
 
@@ -108,7 +114,7 @@ def parse_site_images(html, site_url):
     images = []
     for image in candidates:
         if image:
-            resolved = safe_site_url(urljoin(site_url, image))
+            resolved = safe_image_url(urljoin(site_url, image))
             if resolved and resolved not in images:
                 images.append(resolved)
     return images
@@ -123,15 +129,16 @@ def fetch_site_image(site_url):
     if not safe_site_url(site_url):
         return None
     try:
+        validate_url(site_url, PAGE_HOSTS)
         request = Request(site_url, headers={"User-Agent": "CodeForToyamaWebsite/1.0"})
-        with urlopen(request, timeout=20) as response:
+        with urlopen(request, timeout=20, allowed_hosts=PAGE_HOSTS) as response:
             raw = response.read(2_000_001)
             if len(raw) > 2_000_000:
                 return None
             charset = response.headers.get_content_charset() or "utf-8"
             candidates = parse_site_images(raw.decode(charset, errors="replace"), response.geturl())
         for image in candidates:
-            published = check_published_site(image)
+            published = check_published_site(image, allowed_hosts=IMAGE_HOSTS)
             if published:
                 return published
         return None
@@ -200,10 +207,21 @@ def collect_projects(get=api_get, verify=check_published_site, fetch_image=fetch
 def safe_site_url(url):
     if not isinstance(url, str):
         return None
-    parts = urlsplit(url)
-    if parts.scheme not in {"https", "http"} or not parts.hostname or parts.username or parts.password:
+    try:
+        parts = urlsplit(url)
+        parts.port
+    except ValueError:
+        return None
+    if parts.scheme != "https" or not parts.hostname or parts.username or parts.password:
         return None
     return url
+
+
+def safe_image_url(url):
+    try:
+        return validate_url(url, IMAGE_HOSTS)
+    except ValueError:
+        return None
 
 
 def project_destination(project):
@@ -263,7 +281,7 @@ def render_featured(data, stale=False):
         source_link = f'<a class="project-source-link" href="{escape(project["url"], quote=True)}">ソースコードを見る（GitHub） ↗</a>' if destination != project["url"] else ''
         image = ''
         if safe_site_url(project.get("pages_url")):
-            image_url = safe_site_url(project.get("image_url")) or "assets/project-placeholder.svg"
+            image_url = safe_image_url(project.get("image_url")) or "assets/project-placeholder.svg"
             image = f'<img class="project-eyecatch" src="{escape(image_url, quote=True)}" alt="" width="1200" height="630" loading="lazy" decoding="async" data-fallback="assets/project-placeholder.svg">'
         cards.append(f'''<article class="project-card">
   <a class="project-main-link" href="{url}">

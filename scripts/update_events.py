@@ -10,13 +10,15 @@ import re
 import shutil
 import sys
 from urllib.parse import urlsplit, urlunsplit
-from urllib.request import Request, urlopen
+from urllib.request import Request
 import xml.etree.ElementTree as ET
 
 try:
-    from update_projects import fetch_site_image, safe_site_url
+    from update_projects import fetch_site_image, safe_image_url
+    from safe_http import FEED_HOSTS, secure_urlopen as urlopen
 except ModuleNotFoundError:
-    from scripts.update_projects import fetch_site_image, safe_site_url
+    from scripts.update_projects import fetch_site_image, safe_image_url
+    from scripts.safe_http import FEED_HOSTS, secure_urlopen as urlopen
 
 ROOT = Path(__file__).resolve().parent.parent
 FEED_URL = "https://codefortoyama.connpass.com/ja.atom"
@@ -98,7 +100,7 @@ def render_events(data, now, stale=False):
         start = datetime.fromisoformat(event["start"]).astimezone(JST)
         end = datetime.fromisoformat(event["end"]).astimezone(JST)
         e = {key: escape(value, quote=True) for key, value in event.items() if isinstance(value, str)}
-        image_url = safe_site_url(event.get("image_url"))
+        image_url = safe_image_url(event.get("image_url"))
         image = f'<a class="event-eyecatch-link" href="{e["url"]}" aria-label="{e["title"]}：connpassの案内を見る"><img class="event-eyecatch" src="{escape(image_url, quote=True)}" alt="" width="1200" height="630" loading="lazy" decoding="async" data-fallback="assets/event-placeholder.svg"></a>' if image_url else ''
         weekday = "月火水木金土日"[start.weekday()]
         hours = start.strftime("%H:%M") + "–" + (end.strftime("%m/%d ") if end.date() != start.date() else "") + end.strftime("%H:%M")
@@ -126,7 +128,7 @@ def render_events(data, now, stale=False):
         blocks.append('<details class="event-history"><summary>最近開催したイベント</summary><ul>')
         for event in past[:3]:
             date = datetime.fromisoformat(event["start"]).astimezone(JST)
-            image_url = safe_site_url(event.get("image_url"))
+            image_url = safe_image_url(event.get("image_url"))
             image = f'<img class="event-history-image" src="{escape(image_url, quote=True)}" alt="" width="120" height="63" loading="lazy" decoding="async" data-fallback="assets/event-placeholder.svg">' if image_url else ''
             blocks.append(f'<li><a href="{escape(event["url"], quote=True)}">{image}<time datetime="{date:%Y-%m-%d}">{date:%Y/%m/%d}</time><span>{escape(event["title"])}</span><span aria-hidden="true">↗</span></a></li>')
         blocks.append('</ul></details>')
@@ -158,7 +160,7 @@ def main():
                 xml = args.feed_file.read_bytes()
             else:
                 request = Request(FEED_URL, headers={"User-Agent": "CodeForToyamaWebsite/1.0"})
-                with urlopen(request, timeout=30) as response:
+                with urlopen(request, timeout=30, allowed_hosts=FEED_HOSTS) as response:
                     xml = response.read(2_000_001)
                 if len(xml) > 2_000_000:
                     raise ValueError("Feed exceeds the size limit")
@@ -167,7 +169,7 @@ def main():
             previous_images = {event["url"]: event.get("image_url") for event in cached["events"]}
             for event in data["events"]:
                 # Image failures must not stop fresh event dates and registration links.
-                event["image_url"] = fetch_site_image(event["url"]) or safe_site_url(previous_images.get(event["url"]))
+                event["image_url"] = fetch_site_image(event["url"]) or safe_image_url(previous_images.get(event["url"]))
         except Exception as error:
             if args.require_fresh or not CACHE.exists():
                 raise

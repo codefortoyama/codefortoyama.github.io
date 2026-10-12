@@ -107,9 +107,38 @@ python3 -m http.server 8000 --directory _site
 
 ### 更新処理を検証する
 
+外部情報の取得は`scripts/safe_http.py`の許可リストで制限しています。
+GitHub API、団体のGitHub Pages、connpass、connpassの画像配信元に、HTTPSの443番ポートで接続します。
+リダイレクト先も接続前に検証し、DNSが返す全IPが公開アドレスであることを確認してから、そのIPへ直接接続します。
+環境変数によるプロキシは使用せず、HTTPSの証明書とホスト名の検証は維持します。
+独自ドメインのページや画像を自動取得する場合は、接続先を確認してから`PAGE_HOSTS`または`IMAGE_HOSTS`へ完全なホスト名を追加してください。
+許可されていない画像は表示せず、プロジェクトには代替画像を表示します。APIから取得したHTTPSの公開サイトのリンクは保持します。
+GitHub APIとconnpassフィードの取得失敗は、従来どおり`--require-fresh`で公開を止めます。
+
 ```sh
 python3 -m unittest discover -s tests
 ```
+
+### GitHub Pagesでのセキュリティ設定
+
+主要3ページには、リソースの読み込みより前にHTMLの`meta`でCSPと`strict-origin-when-cross-origin`の参照元ポリシーを設定しています。
+Google Analyticsの初期化は`js/analytics.js`へ分離し、CSPでインラインJavaScriptと`eval`を許可していません。
+スクリプトは自サイトとGoogleタグ、画像は自サイト・connpassの画像配信元・解析用の配信元に限定しています。
+Google Analyticsの通信先は、広告機能を使わない構成の公式資料を基にしています。広告機能を追加する場合は通信先とCSPを見直してください。
+イベントやプロジェクトの更新で新しい画像配信元を使う場合は、更新処理の許可リストと3ページのCSPの両方を確認してください。
+公開サイトのURLがHTTPの場合は、自動生成するリンクをGitHubへ切り替えます。
+
+GitHub PagesでのHTML変更では、HSTS、`X-Content-Type-Options`、埋め込みを制限する`frame-ancestors`のHTTPヘッダーを設定できません。
+`frame-ancestors`や`X-Frame-Options`を`meta`に記載しても対策にならないため、追加していません。
+Googleタグは配信内容が更新されるため、固定ハッシュによるSRIは設定せず、CSPで読み込み元を制限しています。
+他の団体リポジトリのPagesも同じオリジンを共有するので、CSPの`'self'`はこのリポジトリだけを指すものではありません。
+配信基盤や独自ドメインを変更する場合は、これらの制約を含めて再評価してください。
+
+ブラウザでの検証には、Playwrightとインストール済みのChromeを使って`node scripts/check-browser-security.mjs`を実行できます。
+Playwrightを別のフォルダへインストールした場合は、環境変数`PLAYWRIGHT_MODULE_PATH`でモジュールの絶対パスを指定します。
+先に`--offline --output _site`で両方の更新処理を実行してください。
+検証はローカルの公開用ファイルをブラウザ内で本番URLに割り当て、外部のGoogleタグと画像を読み込みます。
+メニュー・画像・CSPの拒否動作・参照元情報を確認し、解析の送信リクエストは遮断して本番の計測に混ぜません。
 
 ### 活動紹介を更新する
 
