@@ -17,6 +17,7 @@ python3 -m http.server 8000
 
 - `index.html`：団体紹介、取り込んだイベント、活動紹介、FAQ、SNSリンク
 - `projects.html`：Code for Toyamaの公開GitHubリポジトリへのリンク集
+- `privacy.html`：プライバシーポリシー（アクセス解析・Cookie・外部リンクの情報の取扱い）
 - `css/site.css`：新サイトのデザインとスマートフォン対応
 - `js/site.js`：モバイルメニューと終了したイベントの表示切り替え
 - `assets/img/`：既存の写真・アイコン
@@ -27,7 +28,7 @@ python3 -m http.server 8000
 - `data/project_descriptions.json`：README・ソース・ファイル構成を確認して作成した説明文と参照元
 - `.github/workflows/pages.yml`：イベント・プロジェクト更新とGitHub Pages公開
 
-既存の`css/style.css`と`js/scripts.js`は保持しています。新サイトでは読み込みません。
+旧サイトの`css/style.css`と`js/scripts.js`は、いずれも新サイトでは読み込んでいません。特に`js/scripts.js`は第三者の中継サービスを経由して外部フィードを取得し、その内容をHTML文字列として組み立てる実装だったため、公開面からの除去を目的に削除しました。新サイトでは`css/site.css`と`js/site.js`のみを使用します。
 
 ### connpassのイベントを更新する
 

@@ -186,7 +186,7 @@ def main():
         (output / "index.html").write_text(page, encoding="utf-8")
         for name in ("css", "js", "assets"):
             shutil.copytree(ROOT / name, output / name, dirs_exist_ok=True)
-        for name in (".nojekyll", "sitemap.xml"):
+        for name in (".nojekyll", "sitemap.xml", "privacy.html"):
             shutil.copy2(ROOT / name, output / name)
         for verification in ROOT.glob("google*.html"):
             if re.fullmatch(r"google[0-9a-f]+\.html", verification.name):
