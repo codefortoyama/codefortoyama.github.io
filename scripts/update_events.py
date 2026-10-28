@@ -188,6 +188,9 @@ def main():
         (output / "index.html").write_text(page, encoding="utf-8")
         for name in ("css", "js", "assets"):
             shutil.copytree(ROOT / name, output / name, dirs_exist_ok=True)
+        events_dir = ROOT / "Events"
+        if events_dir.is_dir():
+            shutil.copytree(events_dir, output / "Events", dirs_exist_ok=True, ignore=shutil.ignore_patterns("*.md"))
         for name in (".nojekyll", "sitemap.xml", "privacy.html"):
             shutil.copy2(ROOT / name, output / name)
         for verification in ROOT.glob("google*.html"):

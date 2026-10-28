@@ -17,6 +17,8 @@ python3 -m http.server 8000
 
 - `index.html`：団体紹介、取り込んだイベント、活動紹介、FAQ、SNSリンク
 - `projects.html`：Code for Toyamaの公開GitHubリポジトリへのリンク集
+- `Events/`：イベント一覧とイベントごとの案内・資料（`Events/<イベント名>/`）
+- `Events/prompt/`：とつげき！隣のプロンプト in 富山の案内ページとスライド（`slide.md`が編集用、`slide.html`が公開用）
 - `privacy.html`：プライバシーポリシー（アクセス解析・Cookie・外部リンクの情報の取扱い）
 - `css/site.css`：新サイトのデザインとスマートフォン対応
 - `js/site.js`：モバイルメニューと終了したイベントの表示切り替え
@@ -62,9 +64,24 @@ GitHubの仕様により、公開リポジトリで60日間活動がないと定
 ### 関連イベントを更新する
 
 connpass以外のイベントは`index.html`の「関連イベント」内を手動更新します。
-掲載中の10月29日のイベントはCode for Toyama Cityが講師を務め、申し込みは主催者の案内につないでいます。
+掲載中の10月29日のイベントはCode for Toyama Cityが講師を務め、詳細は`Events/prompt/`の案内ページ、申し込みは主催者の案内につないでいます。
 日付、本文、申し込み先、`data-event-end`（日本時間の終了日時）を一緒に変更してください。
 JavaScriptが有効な場合、終了後は「開催終了」と表示します。終了後は手動で記事を整理してください。
+
+### イベントページを追加・更新する
+
+イベントの一覧は`Events/index.html`、イベントごとの案内と資料は`Events/<イベント名>/`に置きます。
+新しいイベントを追加するときは、`Events/`の下にイベント名のディレクトリを作り、案内ページの`index.html`と資料を格納してください。
+`Events/index.html`の一覧と、必要に応じて`index.html`の「関連イベント」からリンクします。
+案内ページは`sitemap.xml`へ追加し、`lastmod`を更新してください。
+
+とつげき！隣のプロンプト in 富山のスライドは、`Events/prompt/slide.md`を編集してMarpで`slide.html`を生成します。
+公開用ワークフローでは`Events/`を`_site`へコピーしますが、編集用の`.md`は公開しません。
+スライドを更新したら`slide.md`と`slide.html`の両方をコミットしてください。
+
+```sh
+npx @marp-team/marp-cli Events/prompt/slide.md -o Events/prompt/slide.html
+```
 
 ### プロジェクトを更新する
 
@@ -121,11 +138,11 @@ python3 -m unittest discover -s tests
 
 ### GitHub Pagesでのセキュリティ設定
 
-主要3ページには、リソースの読み込みより前にHTMLの`meta`でCSPと`strict-origin-when-cross-origin`の参照元ポリシーを設定しています。
+主要5ページには、リソースの読み込みより前にHTMLの`meta`でCSPと`strict-origin-when-cross-origin`の参照元ポリシーを設定しています。
 Google Analyticsの初期化は`js/analytics.js`へ分離し、CSPでインラインJavaScriptと`eval`を許可していません。
 スクリプトは自サイトとGoogleタグ、画像は自サイト・connpassの画像配信元・解析用の配信元に限定しています。
 Google Analyticsの通信先は、広告機能を使わない構成の公式資料を基にしています。広告機能を追加する場合は通信先とCSPを見直してください。
-イベントやプロジェクトの更新で新しい画像配信元を使う場合は、更新処理の許可リストと3ページのCSPの両方を確認してください。
+イベントやプロジェクトの更新で新しい画像配信元を使う場合は、更新処理の許可リストと5ページのCSPの両方を確認してください。
 公開サイトのURLがHTTPの場合は、自動生成するリンクをGitHubへ切り替えます。
 
 GitHub PagesでのHTML変更では、HSTS、`X-Content-Type-Options`、埋め込みを制限する`frame-ancestors`のHTTPヘッダーを設定できません。

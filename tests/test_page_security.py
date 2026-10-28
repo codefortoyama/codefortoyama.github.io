@@ -5,6 +5,7 @@ from pathlib import Path
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
+PAGES = ("index.html", "projects.html", "privacy.html", "Events/index.html", "Events/prompt/index.html")
 
 
 class Page(HTMLParser):
@@ -20,7 +21,7 @@ class Page(HTMLParser):
 class PageSecurityTests(unittest.TestCase):
     def test_security_policy_precedes_all_resource_loading_on_each_page(self):
         policies = []
-        for name in ("index.html", "projects.html", "privacy.html"):
+        for name in PAGES:
             with self.subTest(page=name):
                 page = Page((ROOT / name).read_text(encoding="utf-8"))
                 index, meta = next((i, attrs) for i, (tag, attrs) in enumerate(page.tags)
@@ -41,7 +42,7 @@ class PageSecurityTests(unittest.TestCase):
         self.assertEqual(len(set(policies)), 1)
 
     def test_no_inline_scripts_handlers_or_http_resource_urls(self):
-        for name in ("index.html", "projects.html", "privacy.html"):
+        for name in PAGES:
             with self.subTest(page=name):
                 page = Page((ROOT / name).read_text(encoding="utf-8"))
                 for tag, attrs in page.tags:

@@ -4,19 +4,31 @@
 <url>
   <loc>https://codefortoyama.github.io/</loc>
   <priority>1.0</priority>
-  <lastmod>2026-10-12T00:00:00+09:00</lastmod>
+  <lastmod>2026-10-27T00:00:00+09:00</lastmod>
 </url>
 
 <url>
   <loc>https://codefortoyama.github.io/projects.html</loc>
   <priority>0.8</priority>
-  <lastmod>2026-10-12T00:00:00+09:00</lastmod>
+  <lastmod>2026-10-27T00:00:00+09:00</lastmod>
+</url>
+
+<url>
+  <loc>https://codefortoyama.github.io/Events/</loc>
+  <priority>0.7</priority>
+  <lastmod>2026-10-27T00:00:00+09:00</lastmod>
+</url>
+
+<url>
+  <loc>https://codefortoyama.github.io/Events/prompt/</loc>
+  <priority>0.6</priority>
+  <lastmod>2026-10-27T00:00:00+09:00</lastmod>
 </url>
 
 <url>
   <loc>https://codefortoyama.github.io/privacy.html</loc>
   <priority>0.3</priority>
-  <lastmod>2026-10-12T00:00:00+09:00</lastmod>
+  <lastmod>2026-10-27T00:00:00+09:00</lastmod>
 </url>
 
 </urlset>
